@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: "aurebesh";
+    src: url(fonts/AurebeshNL.ttf);
+}
+
+.nav-link {
+    border: 10px white;
+}
+
+.btn-group {
+    margin-top: 1em;
+    margin-bottom: 5px;
+}
+
+.btn-group a {
+    padding: 3px 7px; /* Some padding */
+ 
+  }
+
+html body {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    background: black;
+    overflow: hidden;
+    color: white;
+    overflow: auto;
+}
+
+input {
+    text-align: center;
+    margin: 5px;
+}
+
+.aurebesh {
+    font-family: "aurebesh";
+}
+
+.button {
+	text-align: center;
+    color: white;
+	margin: 5px 0;
+    background-color: black;
+    border: 2px solid white;
+    min-width: 33px;
+}
+
+.button-text {
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: white;
+    border: 2px solid #E7A932;
+    padding: 10px;
+    background-color: #4C4C4C;
+    
+}
+
+.button:hover {
+    background-color: #f04a23;
+    color: #1c2134;
+    border: 2px solid #6a7889;
+}
+
+.logo {
+    width: 13px;
+}
+
+.logoI {
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+.text_field {
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+}
+
+.text_field:focus {
+    background-color: black;
+    border:2px solid #e06b29;
+    color: white;
+    box-shadow: none !important;
+}
+
+fieldset {
+    border: 2px solid white;
+    min-height: 100px;
+    position: relative;
+}
+
+legend {
+    position: absolute;
+    left: 10%;
+    background: black;
+}
+
+.in1 {
+    top: -10%;
+}
+
+.in2 {
+    top: -2%;
+}
+
+.outtxt {
+    top: -15%;
+    
+}
+
+.output {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.translation {
+    font-size: 25px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 10px 10px;
+    max-width: 450px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 30pt;
+    margin-bottom: 10px;
+}
+
+.header {
+    padding-top:2em;
+    padding-bottom: 2em;
+}
+
+.container {
+    display: block;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 1em;
+
+}
+
+p {
+	padding-left: 10px;
+    font-size: 14pt;
+    color: #fff;
+    font-weight: 400;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+img {
+/*    display: block;*/
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+
+
+
+

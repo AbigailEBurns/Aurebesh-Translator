@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Aurebesh to Basic
+{% endblock %}
+
+{% block main %}
+<fieldset class="container p-3">
+    <legend class="float-none w-auto px-3 outtxt">Output</legend>
+    <div class="translation">{{ ('\n' ~ basic_text) | wordwrap(20)}}</div>
+</fieldset>
+
+<br />
+
+<fieldset class="container p-3">
+    <legend class="float-none w-auto px-3 in2">Input</legend>
+    <form action="/A2B" method="post">
+        <input class = "aurebesh text_field form-control mx-auto w-auto" id="tbInput" name="tbInput" type="text" />
+        <button class="button" type="submit">Translate</button>
+    </form>
+
+    <div class="py-2">
+        <input class="button" id="btnSpc" type="button" value="Space" onclick="spc();" />
+        <input class="button" id="btnDel" type="button" value="Backspace" onclick="del();" />
+    </div>
+    <div class = "aurebesh keyboard mx-auto" id="VirtualKey">
+        <div>
+            <input class="button" id="a" type="button" value="A"onclick="input(this);"/>
+            <input class="button" id="b" type="button" value="B"onclick="input(this);"/>
+            <input class="button" id="c" type="button" value="C"onclick="input(this);"/>
+            <input class="button" id="d" type="button" value="D"onclick="input(this);"/>
+            <input class="button" id="e" type="button" value="E"onclick="input(this);"/>
+            <input class="button" id="f" type="button" value="F"onclick="input(this);"/>
+            <input class="button" id="g" type="button" value="G"onclick="input(this);"/>
+            <input class="button" id="h" type="button" value="H"onclick="input(this);"/>
+            <input class="button" id="i" type="button" value="I"onclick="input(this);"/>
+            <input class="button" id="j" type="button" value="J"onclick="input(this);"/>
+            <input class="button" id="k" type="button" value="K"onclick="input(this);"/>
+            <input class="button" id="l" type="button" value="L"onclick="input(this);"/>
+            <input class="button" id="m" type="button" value="M"onclick="input(this);"/>
+            <input class="button" id="n" type="button" value="N"onclick="input(this);"/>
+            <input class="button" id="o" type="button" value="O"onclick="input(this);"/>
+            <input class="button" id="p" type="button" value="P"onclick="input(this);"/>
+            <input class="button" id="q" type="button" value="Q"onclick="input(this);"/>
+            <input class="button" id="r" type="button" value="R"onclick="input(this);"/>
+            <input class="button" id="s" type="button" value="S"onclick="input(this);"/>
+            <input class="button" id="t" type="button" value="T"onclick="input(this);"/>
+            <input class="button" id="u" type="button" value="U"onclick="input(this);"/>
+            <input class="button" id="v" type="button" value="V"onclick="input(this);"/>
+            <input class="button" id="w" type="button" value="W"onclick="input(this);"/>
+            <input class="button" id="x" type="button" value="X"onclick="input(this);"/>
+            <input class="button" id="y" type="button" value="Y"onclick="input(this);"/>
+            <input class="button" id="z" type="button" value="Z"onclick="input(this);"/>
+        </div>
+        <div>
+            <input class="button" id="0" type="button" value="0"onclick="input(this);"/>
+            <input class="button" id="1" type="button" value="1"onclick="input(this);"/>
+            <input class="button" id="2" type="button" value="2"onclick="input(this);"/>
+            <input class="button" id="3" type="button" value="3"onclick="input(this);"/>
+            <input class="button" id="4" type="button" value="4"onclick="input(this);"/>
+            <input class="button" id="5" type="button" value="5"onclick="input(this);"/>
+            <input class="button" id="6" type="button" value="6"onclick="input(this);"/>
+            <input class="button" id="7" type="button" value="7"onclick="input(this);"/>
+            <input class="button" id="8" type="button" value="8"onclick="input(this);"/>
+            <input class="button" id="9" type="button" value="9"onclick="input(this);"/>
+        </div>
+        <div>
+            <input class="button" id="." type="button" value="."onclick="input(this);"/>
+            <input class="button" id="," type="button" value=","onclick="input(this);"/>
+            <input class="button" id="?" type="button" value="?"onclick="input(this);"/>
+            <input class="button" id="!" type="button" value="!"onclick="input(this);"/>
+            <input class="button" id='"' type="button" value='"'onclick="input(this);"/>
+            <input class="button" id="'" type="button" value="'"onclick="input(this);"/>
+            <input class="button" id=":" type="button" value=":"onclick="input(this);"/>
+            <input class="button" id=";" type="button" value=";"onclick="input(this);"/>
+            <input class="button" id="&" type="button" value="&"onclick="input(this);"/>
+            <input class="button" id="$" type="button" value="$"onclick="input(this);"/>
+            <input class="button" id="#" type="button" value="#"onclick="input(this);"/>
+            <input class="button" id="%" type="button" value="%"onclick="input(this);"/>
+            <input class="button" id="(" type="button" value="("onclick="input(this);"/>
+            <input class="button" id=")" type="button" value=")"onclick="input(this);"/>
+            <input class="button" id="*" type="button" value="*"onclick="input(this);"/>
+            <input class="button" id="+" type="button" value="+"onclick="input(this);"/>
+            <input class="button" id="-" type="button" value="-"onclick="input(this);"/>
+            <input class="button" id="/" type="button" value="/"onclick="input(this);"/>
+            <input class="button" id="<" type="button" value="<"onclick="input(this);"/>
+            <input class="button" id=">" type="button" value=">"onclick="input(this);"/>
+            <input class="button" id="=" type="button" value="="onclick="input(this);"/>
+            <input class="button" id="@" type="button" value="@"onclick="input(this);"/>
+            <input class="button" id="[" type="button" value="["onclick="input(this);"/>
+            <input class="button" id="]" type="button" value="]"onclick="input(this);"/>
+            <input class="button" id="\" type="button" value="\"onclick="input(this);"/>
+            <input class="button" id="^" type="button" value="^"onclick="input(this);"/>
+            <input class="button" id="_" type="button" value="_"onclick="input(this);"/>
+            <input class="button" id="`" type="button" value="`"onclick="input(this);"/>
+            <input class="button" id="{" type="button" value="{"onclick="input(this);"/>
+            <input class="button" id="}" type="button" value="}"onclick="input(this);"/>
+            <input class="button" id="|" type="button" value="|"onclick="input(this);"/>
+            <input class="button" id="~" type="button" value="~"onclick="input(this);"/>
+            <input class="button" id=";" type="button" value=";"onclick="input(this);"/>
+            <input class="button" id="&" type="button" value="&"onclick="input(this);"/>
+            <input class="button" id="$" type="button" value="$"onclick="input(this);"/>
+            <input class="button" id="#" type="button" value="#"onclick="input(this);"/>
+        </div>
+</fieldset>
+
+<script>
+    function input(e) {
+        var tbInput = document.getElementById("tbInput");
+        tbInput.value = tbInput.value + e.value;
+    }
+
+    function del() {
+        var tbInput = document.getElementById("tbInput");
+        tbInput.value = tbInput.value.substr(0, tbInput.value.length - 1);
+    }
+
+    function spc() {
+        var tbInput = document.getElementById("tbInput");
+        tbInput.value = tbInput.value + " ";
+    }
+</script>
+{% endblock %}

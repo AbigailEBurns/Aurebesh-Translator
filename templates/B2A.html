@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Basic to Aurebesh
+{% endblock %}
+
+{% block main %}
+<fieldset class="container p-3">
+    <legend class="float-none w-auto px-3 in1">Input</legend>
+    <form action="/B2A" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" class="text_field form-control mx-auto w-auto" id="basic" name="basic" placeholder="Input Basic Here" type="text">
+        </div>
+        <button class="button" type="submit">Translate</button>
+    </form>
+</fieldset>
+
+<br />
+
+<fieldset class="container p-3">
+    <legend class="float-none w-auto px-3 outtxt">Output</legend>
+    <div class = "aurebesh translation"> {{ ('\n' ~ basic_text) | wordwrap(11) }}</div>
+</fieldset>
+{% endblock %}
