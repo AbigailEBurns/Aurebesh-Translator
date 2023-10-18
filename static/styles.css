@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
+/*aurebesh font*/
 @font-face {
     font-family: "aurebesh";
     src: url(fonts/AurebeshNL.ttf);
@@ -9,16 +10,18 @@
     border: 10px white;
 }
 
+/*for the top nav buttons*/
 .btn-group {
     margin-top: 1em;
     margin-bottom: 5px;
 }
 
+/*for the top nav button links*/
 .btn-group a {
     padding: 3px 7px; /* Some padding */
- 
-  }
+}
 
+/*for the general design*/
 html body {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
@@ -28,15 +31,18 @@ html body {
     overflow: auto;
 }
 
+/*for the input text boxes*/
 input {
     text-align: center;
     margin: 5px;
 }
 
+/*assigns the aurebesh font to enable the translation*/
 .aurebesh {
     font-family: "aurebesh";
 }
 
+/*button design*/
 .button {
 	text-align: center;
     color: white;
@@ -46,6 +52,7 @@ input {
     min-width: 33px;
 }
 
+/*button text design*/
 .button-text {
     text-align: center;
     font-weight: 400;
@@ -58,27 +65,32 @@ input {
     
 }
 
+/*when the cursor is over a button*/
 .button:hover {
     background-color: #f04a23;
     color: #1c2134;
     border: 2px solid #6a7889;
 }
 
+/*logo for the navbar*/
 .logo {
     width: 13px;
 }
 
+/*logo for the homepage*/
 .logoI {
     width: 30px;
     margin-bottom: 10px;
 }
 
+/*design of input text boxes*/
 .text_field {
     background-color: black;
     border: 2px solid white;
     color: white;
 }
 
+/*when clicked into the text box*/
 .text_field:focus {
     background-color: black;
     border:2px solid #e06b29;
@@ -86,36 +98,37 @@ input {
     box-shadow: none !important;
 }
 
+/*the border to create the word in border effect*/
 fieldset {
     border: 2px solid white;
     min-height: 100px;
     position: relative;
 }
 
+/*the word to create the word in border effect*/
 legend {
     position: absolute;
     left: 10%;
     background: black;
 }
 
+/*to precisly position the word input on b2a*/
 .in1 {
     top: -10%;
 }
 
+/*to precisly position the word input on a2b*/
 .in2 {
     top: -2%;
 }
 
+/*to precisly position the word output on b2a and a2b*/
 .outtxt {
     top: -15%;
     
 }
 
-.output {
-    display: flex;
-    flex-wrap: wrap;
-}
-
+/*to center and size the displayed translations*/
 .translation {
     font-size: 25px;
     margin: 0;
@@ -126,6 +139,7 @@ legend {
     transform: translate(-50%, -50%);
 }
 
+/*design of the aurebesh keyboard on a2b*/
 .keyboard {
     display: flex;
     flex-direction: row;
@@ -137,6 +151,7 @@ legend {
     max-width: 450px;
 }
 
+/*h1 text design*/
 h1 {
     text-align: center;
     margin: 0;
@@ -173,7 +188,6 @@ a {
 
 
 img {
-/*    display: block;*/
     margin: 0 auto;
     max-width: 100%;
 }

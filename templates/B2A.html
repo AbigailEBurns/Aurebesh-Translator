@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block main %}
+<!--field set and legend together create the nested title in border look-->
 <fieldset class="container p-3">
     <legend class="float-none w-auto px-3 in1">Input</legend>
+    <!--text field for user to input the text they want translated-->
     <form action="/B2A" method="post">
         <div class="mb-3">
             <input autocomplete="off" class="text_field form-control mx-auto w-auto" id="basic" name="basic" placeholder="Input Basic Here" type="text">
@@ -17,8 +19,10 @@
 
 <br />
 
+<!--field set and legend together create the nested title in border look-->
 <fieldset class="container p-3">
     <legend class="float-none w-auto px-3 outtxt">Output</legend>
+    <!--jinja placeholder for the tranlated text. uses the aurebesh font to do the translating. wordwrap to put the text to a new line if its too long-->
     <div class = "aurebesh translation"> {{ ('\n' ~ basic_text) | wordwrap(11) }}</div>
 </fieldset>
 {% endblock %}

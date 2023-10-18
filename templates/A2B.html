@@ -5,25 +5,33 @@
 {% endblock %}
 
 {% block main %}
+<!--field set and legend together create the nested title in border look-->
 <fieldset class="container p-3">
     <legend class="float-none w-auto px-3 outtxt">Output</legend>
+    <!--jinja placeholder for the tranlated text. wordwrap to put the text to a new line if its too long-->
     <div class="translation">{{ ('\n' ~ basic_text) | wordwrap(20)}}</div>
 </fieldset>
 
 <br />
 
+<!--field set and legend together create the nested title in border look-->
 <fieldset class="container p-3">
     <legend class="float-none w-auto px-3 in2">Input</legend>
+    <!--text field where text typed byt the user with the below keyboard will appear-->
     <form action="/A2B" method="post">
         <input class = "aurebesh text_field form-control mx-auto w-auto" id="tbInput" name="tbInput" type="text" />
         <button class="button" type="submit">Translate</button>
     </form>
 
+    <!--aurebesh keyboard-->
     <div class="py-2">
+        <!--space-->
         <input class="button" id="btnSpc" type="button" value="Space" onclick="spc();" />
+        <!--delete-->
         <input class="button" id="btnDel" type="button" value="Backspace" onclick="del();" />
     </div>
     <div class = "aurebesh keyboard mx-auto" id="VirtualKey">
+        <!--alpa keys-->
         <div>
             <input class="button" id="a" type="button" value="A"onclick="input(this);"/>
             <input class="button" id="b" type="button" value="B"onclick="input(this);"/>
@@ -52,6 +60,7 @@
             <input class="button" id="y" type="button" value="Y"onclick="input(this);"/>
             <input class="button" id="z" type="button" value="Z"onclick="input(this);"/>
         </div>
+        <!--numeric keys-->
         <div>
             <input class="button" id="0" type="button" value="0"onclick="input(this);"/>
             <input class="button" id="1" type="button" value="1"onclick="input(this);"/>
@@ -64,6 +73,7 @@
             <input class="button" id="8" type="button" value="8"onclick="input(this);"/>
             <input class="button" id="9" type="button" value="9"onclick="input(this);"/>
         </div>
+        <!--punctuation and symbol keys-->
         <div>
             <input class="button" id="." type="button" value="."onclick="input(this);"/>
             <input class="button" id="," type="button" value=","onclick="input(this);"/>
@@ -104,17 +114,21 @@
         </div>
 </fieldset>
 
+<!--javascript to turn the above buttons intot a keyboard that can type into the text field-->
 <script>
+    //for the alphanumeric, punctuation and symbol keys
     function input(e) {
         var tbInput = document.getElementById("tbInput");
         tbInput.value = tbInput.value + e.value;
     }
 
+    //delete
     function del() {
         var tbInput = document.getElementById("tbInput");
         tbInput.value = tbInput.value.substr(0, tbInput.value.length - 1);
     }
 
+    //space
     function spc() {
         var tbInput = document.getElementById("tbInput");
         tbInput.value = tbInput.value + " ";
