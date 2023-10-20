@@ -3,25 +3,27 @@
 Aurebesh Translator
 
 Video Demo:  <URL HERE>
-Description: A web app that translates basic (english) to Aurebesh, and Aurebesh to Basic.
+Description: A web app that translates Basic (English) to Aurebesh, and Aurebesh to Basic.
 
-TODO Your README.md file should be minimally multiple paragraphs in length, and should explain what your project is, what each of the files you wrote for the project contains and does, and if you debated certain design choices, explaining why you made them. Ensure you allocate sufficient time and energy to writing a README.md that documents your project thoroughly. Be proud of it! If it is too short, the system will reject it.
+I recently visited Disney's Galactic Starcruiser. It is a 2 day, fully immersive and interactive, theatrical experience where you become a character in the Star Wars universe and live out the events that happen on the Starcruiser Halcyon, making choices along the way that shape your journey.
 
+In preparation for this journey, I learned to read Aurebesh, the alphabet that often appears in Star Wars. It is important to note that it is not its own language, but simply a letter for letter conversion of the English alphabet, where A is one symbol, B another symbol, and so on. It is also important to note that English is knows as Basic in the Star Wars universe
 
-I recently was fortunate enough to get to go on Disney's Galactic Starcruiser.  It is a 2 day, fully immersive and interactive, theatrical experience where you become a character in the Star Wars universe and live out the events that happen on your Starcruiser the Halcyon, making choices along the way that shape your journey.
-
-In preperation for this journey, I learned to read Aurebesh, the alphabet that often appears in Star Wars. It is not it's own language, but simply a letter for letter conversion of the english alphabet, where A is one symbol, B another symbol, and so on.
-
-Although Aurebesh is a fairly easy language to learn to read, it is harder to write and not everyone has the time to learn it. Due to this experience I was inspired to create this translation app to translate from both basic to aurebesh and aurebesh to basic.
+Although Aurebesh is fairly easy to learn to read, it is harder to write and not everyone has the time or desire to learn it. I was inspired to create this translator by my experience preparing for and experiencing the Halcyon as an understanding of Aurebesh enriched my time there and has given me a depper understanding of the Star Wars universe since then.
 
 APP.PY
-The main controls for the app. 
-flask and ncessary functionality are imported at the top of the page. it is then configured as a flask app. 
-I define the "/" route as the home page which directs to the index.html template. 
-"/B2A" is the next route defined with GET and POST parameters. If the request is get it will render the B2A =.html template. If the request is post, it will save the text as the basic_text variable and check to make sure that the user has entered text and that the text is not too long. The limit on the length of the text is to make sure that the text fits properly in the 'output' box in both desktop and mobile views. If the user does not input text or if the text is too long, the it will renger the porgs.html temlate which shows an error. If the user has entered the text correctly, it will pass the basic_text variable to the B2A.html template, which will display it in a jinja template in the 'output' section. The Aurebesh font is applied to it as a css class which causes the translation
-the "/A2B" route is applied similarly, the main difference being that it checks for a different length of text. This is becasue basic characters takes up less space than the aurebesh characters.
+This is the main control for the app. 
+
+Flask and other necessary functionalites, such as request and render_template, are imported at the top of the page. It is then configured as a flask app. 
+
+I define the "/" route as the home page which directs to the index.html template and defines it as the homepage for the app.
+
+"/B2A" is the next route defined, with GET and POST parameters. If the request is GET it will render the B2A.html template. If the request is POST, it will save the text as the basic_text variable and check to make sure that the user has entered text and that the text is not too long. The limit on the length of the text is to make sure that the text fits properly in the 'output' box in both desktop and mobile views. If the user does not input text or if the text is too long, then it will render the porgs.html template which shows an error. If the user has entered the text correctly, it will pass the basic_text variable to the B2A.html template, which will display it in a Jinja placeholder in the 'Output' section. The Aurebesh font is applied to it as a CSS class which causes the translation.
+
+The "/A2B" route is applied similarly, the main difference being that it checks for a different length of text. This is because basic characters take up less space than the Aurebesh characters. It also saves the user input in a different variable and the Aurebesh class is not applied when passed to the jinja placeholder.
 
 REQUIREMENTS.TXT
+These are the elements required to run the app:
 cs50 to require the cs50 library
 flask is required for it to run
 gunicord required for it to be hosted on render
@@ -29,55 +31,69 @@ gunicord required for it to be hosted on render
 TEMPLATES
 
 LAYOUT.HTML
-This dictates the layout for the whole app. I inport bootstrap for both Css and html. I connect the css style sheet to this page so that design choice i make in css will be reflected throughout the app. I establish the title as well as creating a jinja placeholde for the titles from the other pages.
+This dictates the layout for the whole app. I import bootstrap for both CSS and HTML. I connect the CSS style sheet to this page so that design choices I make in CSS will be reflected throughout the app. I establish the title as well as creating a Jinja placeholder for the titles from the other pages.
 
-I establish a navbar, although the only component is the 'brand'. I incorporat the img of the CSL logo into the word 'Translator' in place of the letter 'o'
+I establish a navbar, although the only component is the 'brand'. I incorporate the img of the CSL logo into the word 'Translator' in place of the letter 'o'. clicking on the 'brand' will follow the '/' route and return the user to the homepage.
 
-I create two buttons to navigate the app. one that takes the user to the page to tranlate basic into aurebesh and another that takes the user to the page to translate aurebesh into basic. the Basic to aurebesh button links to the previously defined "/B2A" route and the Aurebesh to basic button links to the "/A2B" route
+Next I create two buttons to navigate the app. One that follows the '/B2A' route and takes the user to the page that translates Basic into Aurebesh. The other follows the '/A2B' route and takes the user to the page to translate Aurebesh into Basic.
 
-last I create a place holder for the other html template to fit into when called.
+Lastly, I created a place holder for the other html template to fit into when called.
 
 INDEX.HTML
 
-this is essentialy the homepage. It links into the layout html template. It displayes a simple welcome message that is 'in universe' from Chandrilla Star Lines. It also includes the img of the CSL logo.
+This is the homepage and is called by the '/' route. It links into the layout html template. It displays a simple 'in universe' welcome message from Chandrilla Star Lines that utilizes the <h1>, <h3>. and <p> tags . It also includes the img of the CSL logo.
 
 PORGS.HTML
 
-This is the error page. It show a message informing the user that there has been an issue, and suggest a couple of things that may have caused the error. The message is also 'in universe' and inplicates creatues known as 'Porgs' in the issues the app has encounterd, as well as including an img of a porg. It also links into the layout template and is called by both the "/B2A" and "/A2B" routes depending on the actions of the user.
+This is the error page. It show a message informing the user that there has been an issue, and suggests a couple of things that may have caused the error. The message is also 'in universe' and implicates creatures known as 'Porgs' in the issues the app has encountered, as well as including an img of a Porg. It  links into the layout template and is called by both the "/B2A" and "/A2B" routes depending on the actions of the user.
 
 B2A.HTML
 
-This is the page that provides Basic to aurebesh translation. It connects with the layout template. Using fieldset and legend, I created a text in border effect for both the input and output sections. First is the input section. here the is an input field for a user to type the text they want translated. there is a button for them to click when they are reaey for their text to be translated by calling the "/B2A" route. when the users text is passed back from the "/B2A" it goes to the jinja placeholder in the 'output' section. The aurebesh class is applied which changes the font to Aurbesh creating the translation. the text in aurbesh is displayed in the output section.
+This is the page that provides Basic to Aurebesh translation. It links with the layout template. 
+
+Using fieldset and legend, I created a text in border effect for both the input and output sections. 
+
+At the top is the Input section. There is an input field for a user to type the text they want translated and there is a button for them to click when they are ready for their text to be translated. When clicked it calls the POST branch of the "/B2A" route. 
+
+When the users’ text is passed back from "/B2A" it goes to the Jinja placeholder in the Output section. The Aurebesh class is applied which changes the font to Aurebesh creating the translation. The text in Aurebesh is displayed in the Output section at the bottom of the page.
 
 A2B.HTML
 
-this is the page that provides Aurebesh to basic translation. for this page i swapped the input and output sections so that output was at the top. I relized this would be the best design for the user, since the aurebesh keyboard has pushed the output section for far down the page. it made send to have the translation be more immidiatly visable after they submitted it.
+This is the page that provides Aurebesh to Basic translation. For this page I swapped the input and output sections so that output was at the top. I realized this would be the best design for the user, since the Aurebesh keyboard had pushed the output section so far down the page. It made sense to have the translation be more visible immediatly after they submitted it.
 
-similarly to the B2A.html page, I used fieldset and legend to created a text in border effect for both the input and output sections. I also used a jinja template to display the users text when it is translated, but this time, i do not apply the aurebesh class, so it displays in basic. 
+Similarly, to the B2A.html page, I used fieldset and legend to create a text in border effect for both the input and output sections. I also used a Jinja template in the Output section to display the users’ text when it is translated, but this time I do not apply the Aurebesh class, so it displays in Basic. 
 
-Like in B2A there is a input field where the users desired text will appear, however this time they will type it using the virtual keyboard and the text will be displayed in aurebesh. there is another button that the user will use when they are ready for their text to be translated, which will call the "/A2B" route.
+Like in B2A there is an input field where the users desired text will appear, however this time they will type it using the virtual keyboard and the text will be displayed in Aurebesh. There is also a 'Translate' submit button that the user will use when they are ready for their text to be translated, which will call the POST branch of the"/A2B" route.
 
-below the input field are two buttons, space and delete. these allow the user to either delete a character if they make a mistake, or input a space if they are inputting multiple words.
+Below the input field are two buttons, 'Space' and 'Backspace'. These allow the user to either delete a character if they make a mistake or input a space if they are inputting multiple words to be translated. They work by calling the JavaScript at the bottom of the page.
 
-I created a virtual aurebesh keyboard on this page, since most people don't have an aurebesh keyboard of their own and users would need a way to type those symbols. I organised it in sections with alphabet in the first, numbers in the second, and punctuation in the third.
+Next I created a virtual Aurebesh keyboard. Most people don't have an Aurebesh keyboard of their own and users would need a way to type Aurebesh symbols. I organized it in sections with alphabet in the first, numbers in the second, and punctuation in the third. This was to make the most likely typed characters more acessible at the top.
 
-The final componenet of this template is the javascript. It has three components. the first makes it so that when the user clicks one of the buttons in the aurebesh keyboard it will appear in the input field. the second and third borth create the functionality for the space and delete buttons. 
+The final component of this template is the JavaScript. It has three functions. The first connects the buttons of the aurebesh keyboard with the input box, so that the characters the user types will appear in the input box. The second and third create the functionality for the delete and space buttons respectivly. 
 
 STATIC
 
 STYLE.CSS
-all the css for the app. includes design for the over all look of the app, as well as all the text, buttons and input. the design elements for fieldset and legend are particularly important as they enable the text in border effect seen in the input and output sections. I also import the Aurebesh font which enabes the translations.
+The CSS stylesheet for the app. Includes design for the overall look of the app, as well as all the text, buttons and input. The design elements for fieldset and legend are particularly important as they enable the text in border effect seen in the input and output sections. I also import the Aurebesh font which enables the translation functionality.
 
 ASSETS
 
 CHIL-PORG-1.PNG
-an image of a porg used on the porgs.html template
+An image of a Porg used on the porgs.html template. Property of the Walt Disney Company
 
 CSLLOGOW.PNG
-the csl logo used in the navbar and the index.html template
+The CSL logo used in the navbar and the index.html template. Property of the Walt Disney Company
 
 FONTS
 
 AUREBESHNL.TTF
-an open source font that enables the translation function of the app.
+An open-source font that enables the translation function of the app.
 Copyright (c) 2022, Vino Rodrigues - github.com/vinorodrigues, with Reserved Font Name AUREBESH.
+
+REFLECTIONS
+
+Overall, I am quite pleased with how this project turned out. It is the first thing I have ever thought of and built from start to finish by myself. It was a huge learning experience, particularly when it came to CSS which I have learned is not my favorite. 
+
+I am really pleased with how I handled the translation functionality with using a font. I feel this is a very simple yet effective solution. I also really enjoyed designing the app to look like something that might exist within the world of Star Wars and be available to CSL passengers. It was also very gratifying building my own keyboard and getting it to function like a keyboard!
+
+The part of the code I am least satisfied with is how I had to limit the characters a user could enter to ensure that it would fit within the output box in both desktop and mobile views. I am sure there are better ways to handle this sort of thing more dynamically, but I couldn’t figure them out for this project. I hope in the future I can come up with a better implementation. I also have concerns that if something happens to the Aurebesh font (if a user’s device is unable to display it properly) then the entire functionality of the app is messed up. 
