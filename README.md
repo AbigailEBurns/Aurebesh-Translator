@@ -2,7 +2,7 @@
 
 Aurebesh Translator
 
-Video Demo:  <URL HERE>
+Video Demo:  https://youtu.be/FOLO8NMk36Y
 Description: A web app that translates Basic (English) to Aurebesh, and Aurebesh to Basic.
 
 I recently visited Disney's Galactic Starcruiser. It is a 2 day fully immersive and interactive theatrical experience where guests become a character in the Star Wars universe. Guests live out the events that happen on the Starcruiser Halcyon, making choices along the way that shape their journey.
