@@ -1,6 +1,6 @@
-# Aurebesh-Translator
 
-Aurebesh Translator
+
+CSL Aurebesh Translator
 
 Video Demo:  https://youtu.be/FOLO8NMk36Y
 Description: A web app that translates Basic (English) to Aurebesh, and Aurebesh to Basic.
