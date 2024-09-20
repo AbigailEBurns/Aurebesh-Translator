@@ -1,99 +1,107 @@
+# CSL Aurebesh Translator
 
+Video Demo: [Watch Here](https://youtu.be/FOLO8NMk36Y)
 
-CSL Aurebesh Translator
+The CSL Aurebesh Translator is a web application that translates text between Basic (English) and Aurebesh, the alphabet used in the Star Wars universe. This tool enhances understanding and interaction with Aurebesh, enriching the Star Wars experience.
 
-Video Demo:  https://youtu.be/FOLO8NMk36Y
-Description: A web app that translates Basic (English) to Aurebesh, and Aurebesh to Basic.
+## Project Inspiration and Purpose
 
-I recently visited Disney's Galactic Starcruiser. It is a 2 day fully immersive and interactive theatrical experience where guests become a character in the Star Wars universe. Guests live out the events that happen on the Starcruiser Halcyon, making choices along the way that shape their journey.
+The CSL Aurebesh Translator, developed as a final project for the CS50 course, demonstrates my proficiency in programming and web development. Inspired by a visit to Disney's Galactic Starcruiser, where I encountered the fictional Star Wars alphabet, Aurebesh, this tool facilitates translation between Basic (English) and Aurebesh.
 
-In preparation for this journey, I learned to read Aurebesh, the alphabet that often appears in Star Wars. It is important to note that Aurebesh is not its own language, but simply a letter for letter conversion of the English alphabet, where A is one symbol, B another symbol, and so on. It is also important to note that English is known as Basic in the Star Wars universe.
+Aurebesh is a letter-for-letter representation of the English alphabet. Designed to simplify translation, the tool offers a user-friendly and thematically appropriate solution for those unable to read it.
 
-Although Aurebesh is fairly easy to learn to read, it is harder to write and not everyone has the time or desire to learn it. I was inspired to create this translator by my experience preparing for and experiencing the Halcyon as an understanding of Aurebesh enriched my time there and has given me a depper understanding of the Star Wars universe since then.
+This work highlights my ability to build functional web applications using Flask, design and style user interfaces with HTML/CSS, and integrate interactive elements with JavaScript, all within a cohesive thematic framework.
 
-APP.PY
-This is the main control for the app. 
+## Technologies Used
+  * **Programming Language:** Python
+  * **Framework:** Flask
+  * **Front-End Technologies:**
+    * HTML
+    * CSS
+    * JavaScript
+    * Bootstrap
+  * **Libraries:**
+    * `cs50`: For interacting with the Flask app.
+    * `flask`: Core framework for web application development.
+    * Jinja: Template engine for rendering dynamic content in Flask.
+  * **Tools:**
+    * `gunicorn`: WSGI HTTP server for hosting the application.
+    * Aurebesh Font: For translating text into Aurebesh.
 
-Flask and other necessary functionalites, such as request and render_template, are imported at the top of the page. I then configured the program as a Flask app. 
+## Features
+  * Basic to Aurebesh Translation: Converts English (Basic) text into Aurebesh, applying a custom font that mimics the visual style of the Star Wars universe, ensuring an immersive user experience.
+  * Aurebesh to Basic Translation: Translates Aurebesh text back into English (Basic), featuring a virtual Aurebesh keyboard for seamless input, maintaining thematic consistency.
+  * Error Handling: Provides user-friendly error messages with "in-universe" narrative elements, offering guidance and suggestions aligned with the Star Wars theme when invalid input or other issues arise.
 
-I define the "/" route which directs to the index.html template and defines it as the homepage for the app.
+## Code Overview
+`app.py`
+  * **Overview:** Serves as the main control for the application. Configures Flask, sets up routes, and handles requests.
+  * **Routes:**
+    * `/`: Renders the homepage (`index.html`).
+    * `/B2A`: Handles Basic to Aurebesh translation. Processes POST requests to convert text and renders `B2A.html` with the translation.
+    * `/A2B`: Handles Aurebesh to Basic translation. Processes POST requests to convert text and renders `A2B.html` with the translation.
 
-"/B2A" is the next route defined, with GET and POST parameters. If the request is GET it will render the B2A.html template. If the request is POST, it will save the text as the basic_text variable and check to make sure that the user has entered text and that the text is not too long. The limit on the length of the text is to make sure that the text fits properly in the 'Output' box in both desktop and mobile views. If the user does not input text or if the text is too long, then it will render the porgs.html template which shows an error. If the user has entered the text correctly, it will pass the basic_text variable to the B2A.html template, which will display it in a Jinja placeholder in the 'Output' section in the B2A.html template. The Aurebesh font is applied to the text as a CSS class which causes the translation.
+`requirements.txt`
+  * Lists dependencies required to run the application:
+    * `cs50`: Library for Flask integration.
+    * `flask`: Web framework.
+    * `gunicorn`: Server for deployment.
 
-The "/A2B" route is applied similarly, the main difference being that it checks for a different length of text. This is because Basic characters take up less space than the Aurebesh characters. It also saves the user input in a different variable and the Aurebesh class is not applied when passed to the Jinja placeholder.
+## Templates
+`layout.html`
+  * **Purpose:** Provides the base layout for the application, including navigation and styling.
+**Features:**
+  * Integrates Bootstrap for responsive design.
+  * Includes a navigation bar with links to translation pages.
+  * Provides placeholders for other templates.
 
-REQUIREMENTS.TXT
-These are the elements required to run the app:
-cs50 to require the cs50 library
-flask is required for the app to run
-gunicorn is required for the app to be hosted on render
+`index.html`
+  * **Purpose:** Serves as the homepage of the application.
+  * **Features:** Displays a welcome message and the CSL logo.
 
-TEMPLATES
+`porgs.html`
+  * **Purpose:** Displays error messages.
+  * **Features:** Includes a message about the error, with a Star Wars-themed explanation involving porgs, and links back to the relevant routes.
 
-LAYOUT.HTML
-This dictates the layout for the whole app. I import bootstrap for both CSS and HTML. I connect the CSS style sheet to this page so that design choices I make in CSS will be reflected throughout the app. I establish the title as well as create a Jinja placeholder for the titles from the other pages.
+`B2A.html`
+  * **Purpose:** Handles Basic to Aurebesh translation.
+  * **Features:**
+    * Input and output sections styled with borders.
+    * Input field for text and a button to submit for translation.
+    * Displays the translated Aurebesh text in a designated output section.
 
-I establish a navbar, although the only component is the 'brand'. I incorporate the <img> of the CSL logo into the word 'Translator' in place of the letter 'o'. Clicking on the 'brand' will follow the '/' route and return the user to the homepage.
+`A2B.html`
+  * **Purpose:** Handles Aurebesh to Basic translation.
+  * **Features:**
+    * Input and output sections arranged for ease of use.
+    * Includes a virtual Aurebesh keyboard with functionality for space and backspace.
+    * JavaScript functions manage keyboard interactions and text input.
 
-Next, I create two buttons to navigate the app. One that follows the '/B2A' route and takes the user to the page that translates Basic into Aurebesh. The other follows the '/A2B' route and takes the user to the page that translates Aurebesh into Basic.
+## Static Assets
 
-Lastly, I created a placeholder for the other html templates to fit into when called.
+`styles.css`
+  * **Purpose:** Provides styling for the application, including layout and text design.
+  * **Features:** Defines the appearance of text and buttons, including the Aurebesh font for translation.
 
-INDEX.HTML
+`assets/`
+  * `chil-porg-1.png`: Image of a porg used in the errors page. Property of The Walt Disney Company.
+  * `csl-logo.png`: CSL logo used in the navigation bar and homepage. Property of The Walt Disney Company.
 
-This is the homepage and is called by the '/' route. It links into the layout.html template. It displays a simple 'in universe' welcome message from Chandrilla Star Lines that utilizes the <h1>, <h3>. and <p> tags . It also includes the <img> of the CSL logo.
+`fonts/`
+  * `aurebeshnl.ttf`: Open-source Aurebesh font for translation functionality. Copyright (c) 2022, Vino Rodrigues - github.com/vinorodrigues, with Reserved Font Name AUREBESH.
 
-PORGS.HTML
+## Relevance to Software Development
+This project demonstrates my ability to:
+  * **Develop dynamic web applications** using Python and Flask, showcasing back-end logic and server-side rendering.
+  * **Design intuitive front-end interfaces** with HTML, CSS, Bootstrap, and JavaScript, creating user-friendly, responsive layouts.
+  * **Implement interactive features** like the virtual keyboard using JavaScript to manage real-time user input.
+  * **Utilize Jinja for template rendering**, enabling efficient data flow between the back-end and front-end.
+  * **Apply robust input validation and error handling**, enhancing user experience by providing clear feedback and preventing application errors.
+  * **Manage external libraries and tools**, such as gunicorn, to deploy and host the application in a production environment.
+  * **Independently learn and integrate thematic elements**, like the Aurebesh font, aligning the project with its thematic context while maintaining functionality.
+  * **Write clean, modular code** following web development best practices, ensuring maintainability and scalability.
 
-This is the error page. It displays a message informing the user that there has been an issue, and suggests a couple of things that may have caused the error. The message is also 'in universe' and implicates creatures known as 'porgs' in the issues the app has encountered, as well as including an <img> of a porg. It links into the layout.html template and is called by both the "/B2A" and "/A2B" routes depending on the actions of the user.
+## Reflections
+This project represents my first full-scale application developed from concept to completion. It provided valuable experience in both web development and design. I am particularly proud of the translation functionality achieved through font application and the immersive design that aligns with the Star Wars universe.
 
-B2A.HTML
-
-This is the page that provides Basic to Aurebesh translation. It links with the layout.html template. 
-
-Using <fieldset> and <legend>, I created a text-in-border effect for both the Input and Output sections. 
-
-At the top is the Input section. There is an input field for a user to type the text they want translated and there is a button for them to click when they are ready for their text to be translated. When clicked, the button calls the POST branch of the "/B2A" route. 
-
-When the users’ text is passed back from "/B2A" it goes to the Jinja placeholder in the Output section. The Aurebesh class is applied which changes the font to Aurebesh, creating the translation. The text in Aurebesh is displayed in the Output section at the bottom of the page.
-
-A2B.HTML
-
-This is the page that provides Aurebesh to Basic translation. For this page I swapped the Input and Output sections so that output was at the top. I realized this would be the best design for the user since the Aurebesh keyboard had pushed the output section so far down the page. It made sense to have the translation be more visible immediately after the user submitted it.
-
-Similar to the B2A.html page, I used <fieldset> and <legend> to create a text-in-border effect for both the Input and Output sections. I also used a Jinja template in the Output section to display the user's text when it is translated, but this time I do not apply the Aurebesh class, so the text displays in Basic. 
-
-Like in B2A there is an input field where the user's desired text will appear, however this time they will type it using the virtual keyboard and the text will be displayed in Aurebesh. There is also a 'Translate' submit button that the user will use when they are ready for their text to be translated, which will call the POST branch of the "/A2B" route.
-
-Below the input field are two buttons, 'Space' and 'Backspace'. These allow the user to either delete a character if they make a mistake or input a space if they are inputting multiple words to be translated. The functionality of the buttons is enabled by calling the JavaScript at the bottom of the page.
-
-Next I created a virtual Aurebesh keyboard since most users don't have a way to input Aurebesh symbols. I organized it into sections with alphabet in the first, numbers in the second, and punctuation in the third. This was to make the most commonly used characters more accessible at the top.
-
-The final component of this template is the JavaScript. It has three functions. The first connects the buttons of the Aurebesh keyboard with the input box, so that the characters the user types will appear in the input box. The second and third create the functionality for the 'Backspace' and 'Space' buttons, respectively. 
-
-STATIC
-
-STYLES.CSS
-The CSS stylesheet for the app. Includes design for the overall look of the app, as well as all of the text, buttons, and input. The design elements for <fieldset> and <legend> are particularly important as they enable the text-in-border effect seen in the Input and Output sections. I also import the Aurebesh font which enables the translation functionality.
-
-ASSETS
-
-CHIL-PORG-1.PNG
-An image of a porg used on the porgs.html template. Property of The Walt Disney Company.
-
-CSLLOGOW.PNG
-The CSL logo used in the navbar and the index.html template. Property of The Walt Disney Company.
-
-FONTS
-
-AUREBESHNL.TTF
-An open-source font that enables the translation function of the app.
-Copyright (c) 2022, Vino Rodrigues - github.com/vinorodrigues, with Reserved Font Name AUREBESH.
-
-REFLECTIONS
-
-Overall, I am quite pleased with how this project turned out. It is the first thing I have ever thought of and built from start to finish by myself. It was a huge learning experience, particularly when it came to CSS. 
-
-I am really pleased with how I handled the translation functionality by using a font. I feel this is a very simple yet effective solution. I also really enjoyed designing the app to look like something that might exist within the world of Star Wars and be available to CSL passengers. It was also very gratifying building my own virtual keyboard and getting it to function like a keyboard!
-
-The part of the code I am least satisfied with is how I had to limit the characters a user could enter to ensure that it would fit within the output box in both desktop and mobile views. I am sure there are better ways to handle this sort of thing more dynamically, but I couldn’t figure them out for this project. I hope in the future I can come up with a better implementation. I also have concerns that if something happens to the Aurebesh font (if a user’s device is unable to display it properly), then the ability to translate fails.
+Challenges included managing text length constraints to fit dynamic output areas and ensuring consistent display of the Aurebesh font across different devices. Future improvements could involve enhancing dynamic text handling and addressing potential font compatibility issues to ensure robust functionality.
